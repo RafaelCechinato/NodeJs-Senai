@@ -36,6 +36,12 @@ async function find(req, res){
 // retorna o item que foi criado
 async function save(req, res){
     try {
+        if (req.file !== undefined) {
+            const { location, key } = req.file;
+            req.body.image = location;
+            req.body.imageKey = key;
+        }
+        
         const result = await UserModel.create(req.body);
         return res.json(result);
     } catch (error) {

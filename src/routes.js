@@ -2,12 +2,14 @@ const express = require('express');
 const routes = express.Router();
 const client = require("../conectarDBPostgres")
 const auth = require('../src/auth')
+const multer = require("multer")
+const upload = require("../upload");
 
 const UserController = require("../src/controller/UserController");
 // routes.tipo("nome_da_rota", auth,metodo)
 // jwt.sign(o que vai ser salvo->{user},"batata-Chave secreta") - cria jwt token
 routes.get("/", UserController.find);
-routes.post("/user", UserController.save);
+routes.post("/user", multer(upload).single("file"),UserController.save);
 routes.delete("/user/:id", UserController.exclude);
 routes.put("/user/:id", UserController.update);
 

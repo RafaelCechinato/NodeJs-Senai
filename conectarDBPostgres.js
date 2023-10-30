@@ -1,14 +1,7 @@
 const { Client } = require('pg');
 
 
-const client = new Client(
-    {  
-        user: 'postgres',
-        host: 'localhost',
-        database: 'postgres',
-        password: '1234',
-        port: 5432 
-    })
+const client = new Client('postgres://guvbmfhe:0sl8DR1tV-NiLgBR5fFU4RXogVWoHRv_@isabelle.db.elephantsql.com/guvbmfhe')
 
 
     /*client.query('SELECT NOW()', (err, res) => {
